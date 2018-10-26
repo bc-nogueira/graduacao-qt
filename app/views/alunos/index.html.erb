@@ -1,0 +1,41 @@
+<h1 class="my-4 text-center">Alunos</h1>
+
+<% @alunos.each do |aluno| %>
+  <div class="card">
+    <div class="card-header d-flex justify-content-between">
+      <h4 class="mb-0"><%= aluno.nome %></h4>
+      <h4 class="mb-0">CR: <%= aluno.calcula_cr %></h4>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">Histórico</h4>
+      <table class="table mb-0">
+        <thead>
+          <tr>
+            <th scope="col">Código</th>
+            <th scope="col">Disciplina</th>
+            <th scope="col">CH</th>
+            <th scope="col">Período</th>
+            <th scope="col">Nota</th>
+            <th scope="col">Nota VS</th>
+            <th scope="col">Frequência</th>
+            <th scope="col">Situação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% aluno.historicos.each do |historico| %>
+            <tr>
+              <td><%= historico.disciplina.codigo %></td>
+              <td><%= historico.disciplina.nome %></td>
+              <td><%= historico.ch %></td>
+              <td><%= historico.anosemestre %></td>
+              <td><%= historico.nota %></td>
+              <td><%= historico.notavs ? historico.notavs : '---' %></td>
+              <td><%= historico.frequencia ? 'Suficiente' : 'Insuficiente' %></td>
+              <td><%= historico.aprovado?  ? 'Sim' : 'Não' %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<% end %>
