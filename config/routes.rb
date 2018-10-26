@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  get 'alunos/index'
+  root to: 'alunos#index'
 end
