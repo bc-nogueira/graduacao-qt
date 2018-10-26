@@ -10,8 +10,9 @@ class Historico < ApplicationRecord
   end
 
   def nota_final
-    return nota if nota >= 6
-    return (nota + notavs)/2 if notavs < 6
-    notavs
+    return nota if nota >= 6 || nota < 4
+    nota_vs = notavs.nil? ? 0 : notavs
+    return (nota + nota_vs)/2 if nota_vs < 6
+    nota_vs
   end
 end
