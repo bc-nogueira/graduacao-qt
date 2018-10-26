@@ -1,6 +1,7 @@
 namespace :dev do
   desc 'Populate the database'
   task populate: :environment do
+    puts '### Iniciando popular do banco ###'
     breno = Aluno.create!(
       nome: 'Breno Nogueira',
       matricula: '216083098'
@@ -77,5 +78,7 @@ namespace :dev do
       aluno: breno,
       disciplina: qt
     )
+
+    puts '### Banco populado ###'
   end
 end
