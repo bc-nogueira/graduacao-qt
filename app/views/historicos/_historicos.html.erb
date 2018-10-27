@@ -1,0 +1,28 @@
+<table class="table mb-0">
+  <thead>
+  <tr>
+    <th scope="col">Código</th>
+    <th scope="col">Disciplina</th>
+    <th scope="col">CH</th>
+    <th scope="col">Período</th>
+    <th scope="col">Nota</th>
+    <th scope="col">Nota VS</th>
+    <th scope="col">Frequência</th>
+    <th scope="col">Situação</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% historicos.each do |historico| %>
+    <tr>
+      <td><%= historico.disciplina.codigo %></td>
+      <td><%= historico.disciplina.nome %></td>
+      <td><%= historico.ch %></td>
+      <td><%= historico.anosemestre %></td>
+      <td><%= historico.nota %></td>
+      <td><%= historico.notavs ? historico.notavs : '---' %></td>
+      <td><%= historico.frequencia ? 'Suficiente' : 'Insuficiente' %></td>
+      <td><%= historico.aprovado?  ? 'Sim' : 'Não' %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

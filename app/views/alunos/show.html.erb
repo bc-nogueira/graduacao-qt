@@ -1,0 +1,9 @@
+<h1><%= @aluno.nome %></h1>
+
+<h3 class="mb-3">Matrícula: <%= @aluno.matricula %></h3>
+
+<h4>Histórico</h4>
+
+<%= render partial: 'historicos/historicos',
+           locals: { historicos: @aluno.historicos } %>
+

@@ -1,4 +1,4 @@
-<h1 class="my-4 text-center">Alunos</h1>
+<h1 class="mb-4 text-center">Alunos</h1>
 
 <% @alunos.each do |aluno| %>
   <div class="card">
@@ -8,34 +8,11 @@
     </div>
     <div class="card-body">
       <h4 class="card-title">Histórico</h4>
-      <table class="table mb-0">
-        <thead>
-          <tr>
-            <th scope="col">Código</th>
-            <th scope="col">Disciplina</th>
-            <th scope="col">CH</th>
-            <th scope="col">Período</th>
-            <th scope="col">Nota</th>
-            <th scope="col">Nota VS</th>
-            <th scope="col">Frequência</th>
-            <th scope="col">Situação</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% aluno.historicos.each do |historico| %>
-            <tr>
-              <td><%= historico.disciplina.codigo %></td>
-              <td><%= historico.disciplina.nome %></td>
-              <td><%= historico.ch %></td>
-              <td><%= historico.anosemestre %></td>
-              <td><%= historico.nota %></td>
-              <td><%= historico.notavs ? historico.notavs : '---' %></td>
-              <td><%= historico.frequencia ? 'Suficiente' : 'Insuficiente' %></td>
-              <td><%= historico.aprovado?  ? 'Sim' : 'Não' %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <%= render partial: 'historicos/historicos',
+                 locals: { historicos: aluno.historicos } %>
+    </div>
+    <div class="card-footer">
+      <%= link_to 'Visualizar', aluno_path(id: aluno.id), class: 'btn btn-primary' %>
     </div>
   </div>
 <% end %>
