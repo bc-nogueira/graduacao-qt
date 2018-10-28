@@ -2,6 +2,8 @@ class Historico < ApplicationRecord
   belongs_to :aluno
   belongs_to :disciplina
 
+  validates :nota, presence: true
+
   def aprovado?
     return false unless frequencia
     return true if nota >= 6
