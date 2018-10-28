@@ -1,0 +1,47 @@
+<h1 class="mb-2 text-center">Criar histórico</h1>
+
+<div class="card text-center">
+  <div class="card-header">
+    <h3 class="mb-0">Aluno: <%= @historico.aluno.nome %></h3>
+  </div>
+  <%= form_for @historico do |f| %>
+    <%= f.hidden_field :aluno_id, value: @historico.aluno_id %>
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col">
+          <%= f.label :disciplina_id %>
+          <%= f.select :disciplina_id,
+                       disciplinas_para_select(@historico.disciplina_id),
+                       { include_blank: 'Selecione a disciplina' },
+                       required: true, class: 'form-control' %>
+        </div>
+        <div class="col">
+          <%= f.label :anosemestre, 'Período' %>
+          <%= f.select :anosemestre,
+                       periodos_para_select(@historico.anosemestre),
+                       { include_blank: 'Selecione o período' },
+                       required: true, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class="col">
+          <%= f.label :nota %>
+          <%= f.number_field :nota, in: 0.0..10.0, step: 0.1,
+                             class: 'form-control', required: true %>
+        </div>
+        <div class="col">
+          <%= f.label :notavs %>
+          <%= f.number_field :notavs, in: 0.0..10.0, step: 0.1,
+                             class: 'form-control' %>
+        </div>
+      </div>
+      <div class="form-check">
+        <%= f.check_box :frequencia, class: 'form-check-input' %>
+        <%= f.label :frequencia, 'Frequência', class: 'form-check-label' %>
+      </div>
+    </div>
+    <div class="card-footer text-muted">
+      <%= f.submit 'Salvar', class: 'btn btn-success' %>
+    </div>
+  <% end %>
+</div>

@@ -12,6 +12,7 @@
                  locals: { historicos: aluno.historicos } %>
     </div>
     <div class="card-footer">
+      <%= link_to 'Adicionar nota', new_historico_path(aluno_id: aluno.id), class: 'btn btn-primary' %>
       <%= link_to 'Visualizar', aluno_path(id: aluno.id), class: 'btn btn-primary' %>
     </div>
   </div>
