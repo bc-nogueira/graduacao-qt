@@ -9,9 +9,7 @@ RSpec.describe AlunosController, type: :controller do
 
   describe 'GET #show' do
     let(:aluno) { FactoryBot.create :aluno }
-
     before(:each) { get :show, params: { id: aluno.id } }
-
 
     it { expect(response.status).to eq 200 }
     it { is_expected.to render_template :show }
