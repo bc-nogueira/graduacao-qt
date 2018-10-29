@@ -6,6 +6,7 @@ class HistoricosController < ApplicationController
 
   def create
     @historico = Historico.new(historico_params)
+    @historico.ch = 60
     redirect_to aluno_path(@historico.aluno_id) and return if @historico.save
     render :new
   end
